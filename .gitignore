@@ -11,6 +11,9 @@ node_modules
 dist
 dist-ssr
 *.local
+public/logo.jpg
+public/logo-2.jpg
+public/logo-2.png
 
 # Editor directories and files
 .vscode/*

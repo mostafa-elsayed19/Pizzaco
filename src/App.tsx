@@ -1,8 +1,10 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import AppLayout from "./ui/AppLayout";
+
 import ErrorPage from "./ui/ErrorPage";
 import Login from "./features/users/Login";
 import ProtectedRoutes from "./ui/ProtectedRoutes";
+import AppLayout from "./ui/AppLayout";
+import { ThemeColorProvider } from "./contexts/ThemeContext";
 
 function App() {
   const routers = createBrowserRouter([
@@ -21,7 +23,11 @@ function App() {
       ],
     },
   ]);
-  return <RouterProvider router={routers} />;
+  return (
+    <ThemeColorProvider>
+      <RouterProvider router={routers} />
+    </ThemeColorProvider>
+  );
 }
 
 export default App;

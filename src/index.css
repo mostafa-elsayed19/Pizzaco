@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root.light {
+  --yellow-color: #facc15; /* Light theme yellow color */
+}
+
+:root.dark {
+  --yellow-color: red; /* Dark theme yellow color */
+}

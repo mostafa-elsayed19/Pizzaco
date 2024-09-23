@@ -8,7 +8,7 @@ function AppLayout() {
       <div className="flex-grow">
         <Outlet />
       </div>
-      <div className="bg-black">Hello</div>
+      <footer>Footer</footer>
     </div>
   );
 }

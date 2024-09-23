@@ -1,7 +1,14 @@
+import { useTheme } from "../hooks/useTheme";
+import Logo from "./Logo";
+
 function Header() {
+  const { toggleThemeColor } = useTheme();
   return (
-    <header className="bg-yellow-400 px-10 py-5 md:px-20 lg:px-40">
-      <h1>Hello</h1>
+    <header className="bg-color-yellow">
+      <div className="flex items-center justify-between px-10 py-5 md:px-20 lg:px-40">
+        <Logo />
+        <button onClick={toggleThemeColor}>Change Theme</button>
+      </div>
     </header>
   );
 }
