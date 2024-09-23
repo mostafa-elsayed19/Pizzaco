@@ -1,7 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import AppLayout from "./ui/AppLayout";
 import ErrorPage from "./ui/ErrorPage";
-import Login from "./features/users/login";
+import Login from "./features/users/Login";
 import ProtectedRoutes from "./ui/ProtectedRoutes";
 
 function App() {
