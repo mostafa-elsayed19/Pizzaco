@@ -22,3 +22,8 @@
   --text-color: #eaeaea;
   --secondary-color: #16213e; */
 }
+
+/* body div main > * { */
+body * {
+  transition-duration: 0.3s;
+}
