@@ -4,7 +4,11 @@ export default {
   theme: {
     extend: {
       colors: {
-        "color-yellow": "var(--yellow-color)",
+        "background-color": "var(--background-color)",
+        "main-color": "var(--main-color)",
+        "accent-color": "var(--accent-color)",
+        "text-color": "var(--text-color)",
+        "secondary-color": "var(--secondary-color)",
       },
     },
   },
