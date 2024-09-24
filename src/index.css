@@ -5,7 +5,7 @@
 :root.light {
   --background-color: #fffbea;
   --main-color: #ffc107;
-  --accent-color: #ffeb3b;
+  --accent-color: #ffb100;
   --text-color: #4b4b4b;
   --secondary-color: #eeeeee;
 }
@@ -13,7 +13,7 @@
 :root.dark {
   --background-color: #31363f;
   --main-color: #222831;
-  --accent-color: #76abae;
+  --accent-color: #7af8ffd4;
   --text-color: #eeeeee;
   --secondary-color: #16213e;
   /* --background-color: #1a1a2e;
