@@ -1,4 +1,4 @@
-function Logo({ height = "h-28" }) {
+function Logo({ height = "h-16" }) {
   return <img src="logo.png" className={`${height}`} alt="" />;
 }
 
