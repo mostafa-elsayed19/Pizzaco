@@ -1,13 +1,14 @@
 import ThemeToggleButton from "./ThemeToggleButton";
 import Logo from "./Logo";
+import Container from "./Container";
 
 function Header() {
   return (
-    <header className="bg-color-yellow">
-      <div className="container mx-auto flex items-center justify-between">
+    <header className="bg-main-color">
+      <Container display="flex items-center justify-between">
         <Logo />
         <ThemeToggleButton />
-      </div>
+      </Container>
     </header>
   );
 }
