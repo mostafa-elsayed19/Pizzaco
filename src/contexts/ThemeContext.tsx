@@ -11,7 +11,7 @@ export function ThemeColorProvider({ children }: { children: ReactNode }) {
     .matches
     ? "dark"
     : "light";
-  console.log(preferedTheme);
+
   const [theme, setTheme] = useLocalStateStorage(preferedTheme, "theme");
 
   function toggleThemeColor() {
