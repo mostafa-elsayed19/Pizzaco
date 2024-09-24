@@ -1,10 +1,11 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { ThemeColorProvider } from "./contexts/ThemeContext";
 
-import ErrorPage from "./ui/ErrorPage";
 import Login from "./features/users/Login";
 import ProtectedRoutes from "./ui/ProtectedRoutes";
+import ErrorPage from "./ui/ErrorPage";
 import AppLayout from "./ui/AppLayout";
-import { ThemeColorProvider } from "./contexts/ThemeContext";
+import Menu from "./features/menu/Menu";
 
 function App() {
   const routers = createBrowserRouter([
@@ -19,6 +20,7 @@ function App() {
         {
           path: "/",
           element: <AppLayout />,
+          children: [{ path: "/menu", element: <Menu /> }],
         },
       ],
     },
