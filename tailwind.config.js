@@ -12,6 +12,7 @@ export default {
         "accent-color": "var(--accent-color)",
         "text-color": "var(--text-color)",
         "secondary-color": "var(--secondary-color)",
+        "loader-background": "var(--loader-background)",
       },
     },
   },
