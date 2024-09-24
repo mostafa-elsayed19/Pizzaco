@@ -1,17 +1,18 @@
 import { Link, useRouteError } from "react-router-dom";
+import Container from "./Container";
 
 function ErrorPage() {
   const error = useRouteError();
   console.log(error);
   return (
-    <div className="flex min-h-screen items-center justify-center">
-      <div className="flex flex-col items-center gap-4">
+    <main className="bg-background-color text-text-color">
+      <Container display="flex flex-col items-center justify-center gap-4 h-screen">
         <p className="text-2xl">Something went wrong</p>
-        <Link to="/" className="w-fit rounded-md bg-slate-200 px-4 py-2">
-          <span className="text-red-500">&larr;</span> take me home
+        <Link to="/" className="w-fit rounded-md bg-main-color px-4 py-2">
+          &larr; take me home
         </Link>
-      </div>
-    </div>
+      </Container>
+    </main>
   );
 }
 
