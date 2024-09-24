@@ -8,10 +8,10 @@ interface Pizza {
 
 function MenuItem({ pizza }: { pizza: Pizza }) {
   return (
-    <div className="flex gap-6 py-4 text-text-color">
+    <div className="flex flex-col gap-6 py-8 text-center text-text-color md:flex-row md:text-left">
       <img
         src={`${pizza.imageUrl}`}
-        className={`h-24 ${pizza.soldOut && "opacity-80 grayscale"}`}
+        className={`mx-auto w-48 md:mx-0 md:h-24 md:w-auto ${pizza.soldOut && "opacity-80 grayscale"}`}
       />
       <div className="flex flex-col">
         <p className="text-lg font-medium">{pizza.name}</p>
