@@ -7,7 +7,7 @@
   --main-color: #ffc107;
   --accent-color: #ffb100;
   --text-color: #4b4b4b;
-  --secondary-color: #eeeeee;
+  --secondary-color: #a3a2a2;
 }
 
 :root.dark {
@@ -15,7 +15,7 @@
   --main-color: #222831;
   --accent-color: #7af8ffd4;
   --text-color: #eeeeee;
-  --secondary-color: #16213e;
+  --secondary-color: #767676;
   /* --background-color: #1a1a2e;
   --main-color: #08141e;
   --accent-color: #00bfff;
