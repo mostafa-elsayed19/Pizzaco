@@ -1,7 +1,7 @@
 interface Pizza {
   imageUrl: string;
   name: string;
-  soldOut?: boolean;
+  soldOut: boolean;
   unitPrice: number;
   ingredients: [];
 }
