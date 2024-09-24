@@ -13,7 +13,7 @@ function Container({
 }) {
   return (
     <div
-      className={`container mx-auto ${display || ""} ${padding} ${textSize}`}
+      className={`container mx-auto px-6 xl:px-0 ${display || ""} ${padding} ${textSize}`}
     >
       {children}
     </div>

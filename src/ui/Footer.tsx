@@ -3,7 +3,7 @@ import Container from "./Container";
 function Footer() {
   return (
     <footer className="bg-main-color text-text-color">
-      <Container display="flex justify-between">
+      <Container display="flex flex-col md:flex-row gap-2 justify-between">
         <p>
           Created with ❤️ by <span className="uppercase">mostafa</span>
         </p>
