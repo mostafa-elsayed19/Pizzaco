@@ -1,3 +1,5 @@
+import Button from "../../ui/Button";
+
 interface Pizza {
   imageUrl: string;
   name: string;
@@ -8,25 +10,32 @@ interface Pizza {
 
 function MenuItem({ pizza }: { pizza: Pizza }) {
   return (
-    <div className="flex flex-col gap-6 py-8 text-center text-text-color md:flex-row md:text-left">
+    <li className="flex gap-6 py-8 text-text-color">
       <img
         src={`${pizza.imageUrl}`}
-        className={`mx-auto w-48 md:mx-0 md:h-24 md:w-auto ${pizza.soldOut && "opacity-80 grayscale"}`}
+        className={`w-28 ${pizza.soldOut && "opacity-80 grayscale"}`}
       />
-      <div className="flex flex-col">
+      <div className="flex grow flex-col">
         <p className="text-lg font-medium">{pizza.name}</p>
         <p className="text-sm capitalize italic text-secondary-color">
           {pizza.ingredients.join(", ")}
         </p>
-        <div className="mt-auto">
+
+        <div className="mt-auto flex items-center justify-between gap-2 text-sm uppercase">
           <span
-            className={`text-sm font-medium ${pizza.soldOut && "text-secondary-color"}`}
+            className={`font-medium ${pizza.soldOut && "text-secondary-color"}`}
           >
             {pizza.soldOut ? "Sold Out" : `${pizza.unitPrice}`}
           </span>
+          <div className="flex items-center gap-2">
+            {/* <Button type="round">-</Button>
+            <span>1</span>
+            <Button type="round">+</Button> */}
+            <Button type="small">Add to cart</Button>
+          </div>
         </div>
       </div>
-    </div>
+    </li>
   );
 }
 
