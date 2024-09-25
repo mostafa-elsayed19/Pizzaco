@@ -12,7 +12,7 @@ function Menu() {
 
   return (
     <Container>
-      <ul className="mx-auto flex flex-col divide-y-2 md:w-3/4">
+      <ul className="mx-auto flex flex-col divide-y-2">
         {menu?.map((pizza) => <MenuItem pizza={pizza} key={pizza.id} />)}
       </ul>
     </Container>
