@@ -6,6 +6,7 @@ import ProtectedRoutes from "./ui/ProtectedRoutes";
 import ErrorPage from "./ui/ErrorPage";
 import AppLayout from "./ui/AppLayout";
 import Menu from "./features/menu/Menu";
+import Home from "./ui/Home";
 
 function App() {
   const routers = createBrowserRouter([
@@ -20,7 +21,10 @@ function App() {
         {
           path: "/",
           element: <AppLayout />,
-          children: [{ path: "/menu", element: <Menu /> }],
+          children: [
+            { index: true, element: <Home /> },
+            { path: "/menu", element: <Menu /> },
+          ],
         },
       ],
     },
