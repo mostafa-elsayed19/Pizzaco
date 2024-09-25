@@ -25,11 +25,6 @@
   --secondary-color: #16213e; */
 }
 
-/* body div main > * { */
-body * {
-  transition-duration: 0.3s;
-}
-
 /* Loader: https://dev.to/afif/i-made-100-css-loaders-for-your-next-project-4eje */
 
 .spinner-3 {
