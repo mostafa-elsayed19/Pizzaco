@@ -6,6 +6,7 @@ import Loader from "./Loader";
 function AppLayout() {
   const navigation = useNavigation();
   const isLoading = navigation.state === "loading";
+
   return (
     <main className="flex h-screen flex-col">
       {isLoading && <Loader />}
