@@ -7,6 +7,9 @@ import ErrorPage from "./ui/ErrorPage";
 import AppLayout from "./ui/AppLayout";
 import Menu from "./features/menu/Menu";
 import Home from "./ui/Home";
+import Order from "./features/order/Order";
+import CreateOrder from "./features/order/CreateOrder";
+import { MenuLoader } from "./utils/loaders";
 
 function App() {
   const routers = createBrowserRouter([
@@ -23,7 +26,20 @@ function App() {
           element: <AppLayout />,
           children: [
             { index: true, element: <Home /> },
-            { path: "/menu", element: <Menu /> },
+            { path: "/menu", element: <Menu />, loader: MenuLoader },
+            {
+              path: "/order",
+              children: [
+                {
+                  path: "newOrder",
+                  element: <CreateOrder />,
+                },
+                {
+                  path: ":orderId",
+                  element: <Order />,
+                },
+              ],
+            },
           ],
         },
       ],
