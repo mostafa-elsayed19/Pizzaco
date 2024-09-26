@@ -10,6 +10,7 @@ import Home from "./ui/Home";
 import Order from "./features/order/Order";
 import CreateOrder from "./features/order/CreateOrder";
 import { MenuLoader } from "./utils/loaders";
+import Cart from "./features/cart/Cart";
 
 function App() {
   const routers = createBrowserRouter([
@@ -27,6 +28,7 @@ function App() {
           children: [
             { index: true, element: <Home /> },
             { path: "/menu", element: <Menu />, loader: MenuLoader },
+            { path: "/cart", element: <Cart /> },
             {
               path: "/order",
               children: [
