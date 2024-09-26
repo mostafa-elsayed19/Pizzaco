@@ -4,44 +4,9 @@ import Button from "../../ui/Button";
 import Container from "../../ui/Container";
 import OrderItem from "./OrderItem";
 import { formatCurrency, formatDate } from "./../../utils/helpers";
-
-interface OrderItem {
-  pizzaId: number;
-  name: string;
-  quantity: number;
-  unitPrice: number;
-  totalPrice: number;
-  ingredients: string[];
-}
+import { fakeData } from "../../utils/fakeData";
 
 const date = "2024-09-26T03:07:11.152Z";
-
-const fakeData: OrderItem[] = [
-  {
-    pizzaId: 1,
-    name: "Margherita",
-    quantity: 3,
-    unitPrice: 12,
-    totalPrice: 36,
-    ingredients: ["tomato", "mozzarella", "basil"],
-  },
-  {
-    pizzaId: 3,
-    name: "Romana",
-    quantity: 1,
-    unitPrice: 15,
-    totalPrice: 15,
-    ingredients: ["tomato", "mozzarella", "prosciutto"],
-  },
-  {
-    pizzaId: 4,
-    name: "Prosciutto e Rucola",
-    quantity: 1,
-    unitPrice: 16,
-    totalPrice: 16,
-    ingredients: ["tomato", "mozzarella", "prosciutto", "arugula"],
-  },
-];
 
 const orderPrice = 67;
 const priorityPrice = 20;
