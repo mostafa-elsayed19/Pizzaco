@@ -1,19 +1,29 @@
 function Input({
+  id,
   type,
   placeholder,
   className,
-  caretColor = false,
+  name,
+  required,
+  defaultValue,
 }: {
+  id?: string;
   type: string;
   placeholder: string;
   className?: string;
-  caretColor: boolean;
+  name: string;
+  required?: boolean;
+  defaultValue?: string | number;
 }) {
   return (
     <input
+      id={id}
       type={type}
-      className={`input ${className} ${caretColor && "caret-accent-color"}`}
+      className={`input ${className}`}
       placeholder={placeholder}
+      name={name}
+      required={required}
+      defaultValue={defaultValue}
     />
   );
 }
