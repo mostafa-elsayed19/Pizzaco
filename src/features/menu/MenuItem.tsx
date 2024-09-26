@@ -1,12 +1,5 @@
+import { Pizza } from "../../types/pizzaTypes";
 import Button from "../../ui/Button";
-
-interface Pizza {
-  imageUrl: string;
-  name: string;
-  soldOut: boolean;
-  unitPrice: number;
-  ingredients: [];
-}
 
 function MenuItem({ pizza }: { pizza: Pizza }) {
   return (
