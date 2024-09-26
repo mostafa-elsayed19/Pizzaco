@@ -18,7 +18,7 @@ function Home() {
           Start Ordering
         </Button>
       ) : (
-        <Input type="text" placeholder="Your full name" />
+        <Input type="text" placeholder="Your full name" caretColor={true} />
       )}
     </Container>
   );
