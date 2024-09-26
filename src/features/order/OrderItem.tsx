@@ -1,3 +1,5 @@
+import { formatCurrency } from "./../../utils/helpers";
+
 function OrderItem({
   item,
 }: {
@@ -15,7 +17,7 @@ function OrderItem({
         <p>
           <span className="font-bold">{quantity}&times;</span> {name}
         </p>
-        <p className="font-bold">{totalPrice}</p>
+        <p className="font-bold">{formatCurrency(totalPrice)}</p>
       </div>
       <p className="text-sm capitalize italic text-secondary-color">
         {ingredients?.join(", ")}

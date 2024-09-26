@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import Button from "../../ui/Button";
 import Container from "../../ui/Container";
 import OrderItem from "./OrderItem";
+import { formatCurrency, formatDate } from "./../../utils/helpers";
 
 interface OrderItem {
   pizzaId: number;
@@ -12,6 +13,8 @@ interface OrderItem {
   totalPrice: number;
   ingredients: string[];
 }
+
+const date = "2024-09-26T03:07:11.152Z";
 
 const fakeData: OrderItem[] = [
   {
@@ -58,7 +61,9 @@ function Order() {
 
       <section className="flex items-center justify-between bg-stone-200/70 px-6 py-4 dark:bg-main-color">
         <h2 className="text-lg font-normal">Only 72 minutes left 😃</h2>
-        <span className="text-xs">(Estimated delivery: Sep 26, 06:07 AM)</span>
+        <span className="text-xs">
+          (Estimated delivery: {formatDate(date)})
+        </span>
       </section>
 
       <section>
@@ -70,12 +75,16 @@ function Order() {
       </section>
 
       <section className="space-y-2 bg-stone-200/70 px-6 py-5 text-secondary-color dark:bg-main-color">
-        <p className="text-sm font-medium">Price pizza: {orderPrice}</p>
+        <p className="text-sm font-medium">
+          Price pizza: {formatCurrency(orderPrice)}
+        </p>
         {priority && (
-          <p className="text-sm font-medium">Price priority: {priorityPrice}</p>
+          <p className="text-sm font-medium">
+            Price priority: {formatCurrency(priorityPrice)}
+          </p>
         )}
         <p className="font-bold text-text-color">
-          To pay on delivery: {orderPrice + priorityPrice}
+          To pay on delivery: {formatCurrency(orderPrice + priorityPrice)}
         </p>
       </section>
 
