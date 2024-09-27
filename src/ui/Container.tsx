@@ -15,7 +15,7 @@ function Container({
 }) {
   return (
     <div
-      className={`container mx-auto px-6 xl:px-0 ${display || ""} ${padding} ${textSize} ${className}`}
+      className={`container mx-auto px-6 xl:px-0 ${display || ""} ${padding || ""} ${textSize || ""} ${className || ""}`}
     >
       {children}
     </div>
