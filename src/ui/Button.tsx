@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import { Link } from "react-router-dom";
 
-type ButtonType = "primary" | "small" | "round" | "secondary";
+type ButtonType = "primary" | "small" | "round" | "secondary" | "link";
 
 const base =
   "rounded-full text-sm font-semibold uppercase tracking-wide transition-colors duration-300 focus:outline-none focus:ring focus:ring-offset-2 disabled:cursor-not-allowed ";
@@ -29,6 +29,7 @@ function Button({
     small: base + mainBtn + "px-4 py-2 md:px-5 md:py-2.5 text-xs" + className,
     round: base + mainBtn + "px-2.5 py-1 md:px-3.5 md:py-2 text-sm" + className,
     secondary: base + secondaryBtn,
+    link: "text-sm text-text-color hover:underline uppercase",
   };
 
   if (to)
