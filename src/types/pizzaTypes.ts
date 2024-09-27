@@ -4,6 +4,8 @@ export interface Pizza {
   name: string;
   soldOut: boolean;
   unitPrice: number;
+  totalPrice?: number;
+  quantity?: number;
   ingredients: [];
 }
 
