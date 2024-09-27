@@ -11,7 +11,7 @@ function Input({
   type: string;
   placeholder: string;
   className?: string;
-  name: string;
+  name?: string;
   required?: boolean;
   defaultValue?: string | number;
 }) {
