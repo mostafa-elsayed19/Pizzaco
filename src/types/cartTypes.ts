@@ -6,3 +6,7 @@ export interface Cart {
   totalPrice: number;
   ingredients: string[];
 }
+
+export interface CartSlice {
+  cart: Cart[];
+}
