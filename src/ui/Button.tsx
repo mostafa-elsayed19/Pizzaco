@@ -31,9 +31,9 @@ function Button({
     primary: base + mainBtn + "px-4 py-3 sm:px-6 sm:py-4 " + className,
     small: base + mainBtn + "px-4 py-2 md:px-5 md:py-2.5 text-xs " + className,
     round:
-      base + mainBtn + "px-2.5 py-1 md:px-3.5 md:py-2 text-sm " + className,
+      base + mainBtn + "px-1.5 py-0.5 md:px-2.5 md:py-1 text-sm " + className,
     secondary: base + secondaryBtn,
-    link: "text-sm text-text-color hover:underline uppercase " + className,
+    link: "text-xs text-text-color hover:underline uppercase " + className,
   };
 
   if (to)
