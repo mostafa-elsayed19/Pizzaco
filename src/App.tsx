@@ -11,6 +11,8 @@ import Order from "./features/order/Order";
 import CreateOrder from "./features/order/CreateOrder";
 import { MenuLoader, OrderLoader } from "./utils/loaders";
 import Cart from "./features/cart/Cart";
+import { Provider } from "react-redux";
+import { store } from "./store";
 
 function App() {
   const routers = createBrowserRouter([
@@ -50,7 +52,9 @@ function App() {
   ]);
   return (
     <ThemeColorProvider>
-      <RouterProvider router={routers} />
+      <Provider store={store}>
+        <RouterProvider router={routers} />
+      </Provider>
     </ThemeColorProvider>
   );
 }
