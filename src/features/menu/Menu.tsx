@@ -8,7 +8,7 @@ function Menu() {
 
   return (
     <Container>
-      <ul className="mx-auto flex flex-col divide-y-2">
+      <ul className="mx-auto flex flex-col divide-y-2 divide-accent-color">
         {menu.map((pizza) => (
           <MenuItem pizza={pizza} key={pizza.id} />
         ))}
