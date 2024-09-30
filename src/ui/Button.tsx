@@ -17,12 +17,15 @@ function Button({
   className,
   children,
   to,
+  onClick,
+  disabled,
 }: {
   type: ButtonType;
   className?: string;
   to?: string;
   onClick?: () => void;
   children: ReactNode;
+  disabled?: boolean;
 }) {
   const styles = {
     primary: base + mainBtn + "px-4 py-3 sm:px-6 sm:py-4 " + className,
@@ -40,7 +43,11 @@ function Button({
       </Link>
     );
 
-  return <button className={`${styles[type]}`}>{children}</button>;
+  return (
+    <button onClick={onClick} disabled={disabled} className={`${styles[type]}`}>
+      {children}
+    </button>
+  );
 }
 
 export default Button;
