@@ -1,10 +1,9 @@
-// order #PJO1QF
-import { useParams } from "react-router-dom";
+import { useLoaderData, useParams } from "react-router-dom";
 import Button from "../../ui/Button";
 import Container from "../../ui/Container";
 import OrderItem from "./OrderItem";
 import { formatCurrency, formatDate } from "./../../utils/helpers";
-import { fakeData } from "../../utils/fakeData";
+import { OrderData } from "../../types/orderTypes";
 
 const date = "2024-09-26T03:07:11.152Z";
 
@@ -14,6 +13,7 @@ const priority = true;
 
 function Order() {
   const { orderId } = useParams();
+  const { cart } = useLoaderData() as OrderData;
   return (
     <Container display="flex flex-col gap-y-8 text-text-color">
       <section className="flex items-center justify-between">
@@ -33,7 +33,7 @@ function Order() {
 
       <section>
         <ul className="mx-auto flex flex-col divide-y-2">
-          {fakeData.map((item) => (
+          {cart.map((item) => (
             <OrderItem item={item} key={item.pizzaId} />
           ))}
         </ul>

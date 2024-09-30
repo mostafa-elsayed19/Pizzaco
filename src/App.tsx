@@ -9,7 +9,7 @@ import Menu from "./features/menu/Menu";
 import Home from "./ui/Home";
 import Order from "./features/order/Order";
 import CreateOrder from "./features/order/CreateOrder";
-import { MenuLoader } from "./utils/loaders";
+import { MenuLoader, OrderLoader } from "./utils/loaders";
 import Cart from "./features/cart/Cart";
 
 function App() {
@@ -39,6 +39,7 @@ function App() {
                 {
                   path: ":orderId",
                   element: <Order />,
+                  loader: OrderLoader,
                 },
               ],
             },
