@@ -1,11 +1,18 @@
+import { useAppDispatch, useAppSelector } from "../../hooks/useReduxMethods";
 import Button from "../../ui/Button";
 import Container from "../../ui/Container";
-import { fakeData } from "../../utils/fakeData";
+// import { fakeData } from "../../utils/fakeData";
 import CartItem from "./CartItem";
+import { clearCart, getCart } from "./cartSlice";
+import EmptyCart from "./EmptyCart";
 
-const cart = fakeData;
+// const cart = fakeData;
 
 function Cart() {
+  const dispatch = useAppDispatch();
+  const cart = useAppSelector(getCart);
+
+  if (!cart.length) return <EmptyCart />;
   return (
     <Container display="flex flex-col gap-4">
       <Button type="link" to="/menu">
@@ -24,7 +31,9 @@ function Cart() {
         <Button type="primary" to="/order/newOrder">
           Order pizza
         </Button>
-        <Button type="secondary">Clear cart</Button>
+        <Button type="secondary" onClick={() => dispatch(clearCart())}>
+          Clear cart
+        </Button>
       </div>
     </Container>
   );

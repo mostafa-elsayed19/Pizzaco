@@ -1,8 +1,11 @@
+import { useAppDispatch } from "../../hooks/useReduxMethods";
 import Button from "../../ui/Button";
+import { deleteItem } from "./cartSlice";
 
-function DeleteCartItem({ onClick }: { onClick: () => void }) {
+function DeleteCartItem({ pizzaId }: { pizzaId: number }) {
+  const dispatch = useAppDispatch();
   return (
-    <Button type="round" onClick={onClick}>
+    <Button type="small" onClick={() => dispatch(deleteItem(pizzaId))}>
       Delete
     </Button>
   );
