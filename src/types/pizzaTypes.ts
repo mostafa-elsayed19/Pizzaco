@@ -8,12 +8,3 @@ export interface Pizza {
   quantity?: number;
   ingredients: [];
 }
-
-export interface CartOrder {
-  pizzaId: number;
-  name: string;
-  quantity: number;
-  unitPrice: number;
-  totalPrice: number;
-  ingredients: string[];
-}

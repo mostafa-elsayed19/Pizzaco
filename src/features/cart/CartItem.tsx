@@ -1,9 +1,9 @@
-import { CartOrder } from "../../types/pizzaTypes";
+import { Cart } from "../../types/cartTypes";
 import { formatCurrency } from "../../utils/helpers";
 import DeleteCartItem from "./DeleteCartItem";
 import UpdateCartItem from "./UpdateCartItem";
 
-function CartItem({ item }: { item: CartOrder }) {
+function CartItem({ item }: { item: Cart }) {
   const { name, quantity, totalPrice } = item;
   return (
     <li className="flex justify-between gap-4 py-2 text-text-color">
