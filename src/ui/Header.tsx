@@ -2,6 +2,7 @@ import ThemeToggleButton from "./ThemeToggleButton";
 import Logo from "./Logo";
 import Container from "./Container";
 import SearchOrder from "../features/order/SearchOrder";
+import CartOverview from "../features/cart/CartOverview";
 
 function Header() {
   return (
@@ -10,6 +11,7 @@ function Header() {
         <Logo />
         <div className="flex items-center gap-4">
           <SearchOrder />
+          <CartOverview />
           <ThemeToggleButton />
         </div>
       </Container>
