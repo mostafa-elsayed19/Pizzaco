@@ -6,7 +6,8 @@ import DeleteCartItem from "./DeleteCartItem";
 import UpdateCartItem from "./UpdateCartItem";
 
 function CartItem({ item }: { item: Cart }) {
-  const { pizzaId, name, quantity, totalPrice, ingredients } = item;
+  const { pizzaId, name, quantity, totalPrice, ingredients, addIngredients } =
+    item;
   const currentQuantity = useAppSelector(getCurrentQuantityById(pizzaId));
 
   const dispatch = useAppDispatch();
@@ -36,8 +37,9 @@ function CartItem({ item }: { item: Cart }) {
       <div className="flex flex-col gap-2 px-4 text-secondary-color">
         <h2 className="text-sm font-semibold">Remove ingredients</h2>
         <div className="flex flex-col flex-wrap gap-2 px-8 text-sm md:flex-row md:gap-4">
-          {ingredients.map((item, index) => (
-            <>
+          {ingredients.map((item, index) => {
+            const isChecked = addIngredients.includes(item);
+            return (
               <div className="flex gap-1" key={index}>
                 <input
                   type="checkbox"
@@ -45,6 +47,7 @@ function CartItem({ item }: { item: Cart }) {
                   id={`${pizzaId}-${item}`}
                   className="bg-accent-color p-4"
                   onChange={(e) => handleRemoveIngredient(e, item)}
+                  disabled={addIngredients.length === 1 && isChecked}
                 />
                 <label
                   htmlFor={`${pizzaId}-${item}`}
@@ -53,8 +56,8 @@ function CartItem({ item }: { item: Cart }) {
                   {item}
                 </label>
               </div>
-            </>
-          ))}
+            );
+          })}
         </div>
       </div>
     </li>
