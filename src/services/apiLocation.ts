@@ -7,8 +7,8 @@ function getPosition(): Promise<GeolocationPosition> {
 export async function getAddress() {
   const positionObj = await getPosition();
   const position = {
-    latitude: positionObj.coords.latitude,
-    longitude: positionObj.coords.longitude,
+    latitude: positionObj.coords.latitude.toString(),
+    longitude: positionObj.coords.longitude.toString(),
   };
 
   // console.log(position);
@@ -20,8 +20,8 @@ export async function getAddress() {
   if (!res.ok) throw Error("Failed getting address");
 
   const { city, countryName } = await res.json();
-  console.log(city, countryName);
-  return { city, countryName };
+
+  return { city, countryName, position };
 }
 // return positionObj;
 
