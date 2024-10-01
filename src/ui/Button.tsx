@@ -10,7 +10,7 @@ const secondaryBtn =
   "border-2 border-stone-300 px-4 py-2.5 text-stone-400 hover:bg-stone-300 hover:text-stone-800 focus:bg-stone-300 focus:text-stone-800 focus:outline-none focus:ring focus:ring-stone-200 sm:px-6 sm:py-3.5 ";
 
 const mainBtn =
-  "bg-accent-color text-text-color hover:bg-main-color focus:bg-accent-color focus:ring-accent-color dark:bg-main-color dark:hover:bg-accent-color dark:hover:text-slate-800 dark:focus:text-slate-800 ";
+  "bg-accent-color text-white hover:bg-main-color focus:bg-accent-color focus:ring-accent-color dark:bg-main-color dark:hover:bg-accent-color dark:hover:text-slate-800 dark:focus:text-slate-800 ";
 
 function Button({
   type,
