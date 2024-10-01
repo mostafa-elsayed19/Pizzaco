@@ -10,17 +10,33 @@ function Input({
   defaultValue,
   onChange,
   value,
+  disabled,
+  checked,
 }: {
   id?: string;
   type: string;
-  placeholder: string;
+  placeholder?: string;
   className?: string;
   name?: string;
   required?: boolean;
   defaultValue?: string | number;
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
   value?: string;
+  disabled?: boolean;
+  checked?: boolean;
 }) {
+  if (type === "checkbox")
+    return (
+      <input
+        type={type}
+        id={id}
+        onChange={onChange}
+        disabled={disabled}
+        checked={checked}
+        className={className}
+      />
+    );
+
   return (
     <input
       id={id}

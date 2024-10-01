@@ -1,5 +1,6 @@
 import { useAppDispatch, useAppSelector } from "../../hooks/useReduxMethods";
 import { Cart } from "../../types/cartTypes";
+import Input from "../../ui/Input";
 import { formatCurrency } from "../../utils/helpers";
 import { getCurrentQuantityById, toggleIngredient } from "./cartSlice";
 import DeleteCartItem from "./DeleteCartItem";
@@ -15,8 +16,9 @@ function CartItem({ item }: { item: Cart }) {
     e: React.ChangeEvent<HTMLInputElement>,
     ingredient: string,
   ) {
-    const isChecked = e.target.checked;
-    dispatch(toggleIngredient({ pizzaId, ingredient, checked: isChecked }));
+    // setIsChecked(e.target.checked);
+    const checked = e.target.checked;
+    dispatch(toggleIngredient({ pizzaId, ingredient, checked }));
   }
 
   return (
@@ -41,13 +43,12 @@ function CartItem({ item }: { item: Cart }) {
             const isChecked = addIngredients.includes(item);
             return (
               <div className="flex gap-1" key={index}>
-                <input
+                <Input
                   type="checkbox"
-                  placeholder="none"
                   id={`${pizzaId}-${item}`}
-                  className="bg-accent-color p-4"
                   onChange={(e) => handleRemoveIngredient(e, item)}
                   disabled={addIngredients.length === 1 && isChecked}
+                  checked={!isChecked}
                 />
                 <label
                   htmlFor={`${pizzaId}-${item}`}
