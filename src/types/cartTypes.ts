@@ -5,6 +5,7 @@ export interface Cart {
   unitPrice: number;
   totalPrice: number;
   ingredients: string[];
+  removeIngredients?: string[];
 }
 
 export interface CartSlice {

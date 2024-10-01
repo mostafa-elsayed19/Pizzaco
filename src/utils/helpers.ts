@@ -14,6 +14,19 @@ export function formatDate(dateStr: string) {
   }).format(new Date(dateStr));
 }
 
+export function generateRandomId(length: number) {
+  const chars =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  let result = "";
+  for (let i = 0; i < length; i++) {
+    result += chars.charAt(Math.floor(Math.random() * chars.length));
+  }
+  return result;
+}
+
+export function generateRandomNumericId() {
+  return Math.floor(1000 + Math.random() * 9000); // Generate a 4-digit number
+}
 // export function formatCurrency(value) {
 //   return new Intl.NumberFormat("en", {
 //     style: "currency",
