@@ -3,6 +3,7 @@ import Container from "../../ui/Container";
 import Input from "../../ui/Input";
 import Button from "../../ui/Button";
 import { formatCurrency } from "./../../utils/helpers";
+import { getAddress } from "../../services/apiLocation";
 
 function CreateOrder() {
   return (
@@ -12,10 +13,10 @@ function CreateOrder() {
       </h2>
       <Form className="flex flex-col gap-4">
         <div className="flex flex-col items-baseline gap-2 md:flex-row md:gap-5">
+          <label htmlFor="name" className="min-w-20">
+            Name
+          </label>
           <div className="flex w-3/4 items-baseline gap-4">
-            <label htmlFor="name" className="min-w-20">
-              Name
-            </label>
             <Input
               id="name"
               type="text"
@@ -31,10 +32,10 @@ function CreateOrder() {
           </p>
         </div>
         <div className="flex flex-col items-baseline gap-2 md:flex-row md:gap-5">
+          <label htmlFor="phone" className="min-w-20">
+            Phone
+          </label>
           <div className="flex w-3/4 items-baseline gap-4">
-            <label htmlFor="phone" className="min-w-20">
-              Phone
-            </label>
             <Input
               id="phone"
               type="text"
@@ -49,10 +50,10 @@ function CreateOrder() {
           </p>
         </div>
         <div className="flex flex-col items-baseline gap-2 md:flex-row md:gap-5">
-          <div className="flex w-3/4 items-baseline gap-4">
-            <label htmlFor="address" className="min-w-20">
-              Address
-            </label>
+          <label htmlFor="address" className="min-w-20">
+            Address
+          </label>
+          <div className="relative flex w-3/4 items-baseline gap-4">
             <Input
               id="address"
               type="text"
@@ -61,6 +62,11 @@ function CreateOrder() {
               required={true}
               name="customer"
             />
+            <span className="absolute right-1 top-1 md:top-1.5">
+              <Button type="small" onClick={() => getAddress()}>
+                Get Address
+              </Button>
+            </span>
           </div>
           <p className="text-sm font-normal text-red-700">
             error will be shown here
