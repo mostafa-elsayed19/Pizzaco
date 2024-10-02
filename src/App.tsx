@@ -13,7 +13,7 @@ import { MenuLoader, OrderLoader } from "./utils/loaders";
 import Cart from "./features/cart/Cart";
 import { Provider } from "react-redux";
 import { store } from "./store";
-import { createNewOrder } from "./utils/actions";
+import { createNewOrder, updateOrderAction } from "./utils/actions";
 
 function App() {
   const routers = createBrowserRouter([
@@ -44,6 +44,7 @@ function App() {
                   path: ":orderId",
                   element: <Order />,
                   loader: OrderLoader,
+                  action: updateOrderAction,
                 },
               ],
             },

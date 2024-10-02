@@ -5,13 +5,26 @@ export function formatCurrency(value: number) {
   }).format(value);
 }
 
-export function formatDate(dateStr: string) {
+export function formatDate(dateStr: string | undefined): string {
+  if (!dateStr) {
+    return "Invalid date"; // Handle undefined or null case
+  }
+
+  const date = new Date(dateStr);
+
+  // Check if the date is valid
+  if (isNaN(date.getTime())) {
+    return "Invalid date"; // Return a default message for invalid dates
+  }
+
   return new Intl.DateTimeFormat("en", {
     day: "numeric",
     month: "short",
+    year: "numeric", // Include year for better context
     hour: "2-digit",
     minute: "2-digit",
-  }).format(new Date(dateStr));
+    hour12: true, // Optional: if you want 12-hour format with AM/PM
+  }).format(date);
 }
 
 export function generateRandomId(length: number) {

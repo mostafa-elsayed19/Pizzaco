@@ -9,11 +9,13 @@ export async function MenuLoader() {
 export async function OrderLoader({ params }: { params: Params<string> }) {
   const id = params.orderId;
 
+  const orderId = Number(id);
+
   if (!id) throw Error("Order ID is missing or invalid.");
 
-  const orders = await getOrder(id);
+  const order = await getOrder(orderId);
 
-  if (!orders) throw Error(`No order with id #${id}`);
+  if (!order) throw Error(`No order with id #${orderId}`);
 
-  return orders;
+  return order;
 }

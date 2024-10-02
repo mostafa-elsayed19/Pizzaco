@@ -1,7 +1,7 @@
 import { OrderData } from "../types/orderTypes";
 import { Pizza } from "../types/pizzaTypes";
 import { generateRandomNumericId } from "../utils/helpers";
-import { supabase } from "./supabase";
+import { supabase, updateEstimatedDelivery } from "./supabase";
 
 export async function getMenu(): Promise<Pizza[]> {
   const { data: menu, error } = await supabase.from("menu").select("*");
@@ -11,7 +11,9 @@ export async function getMenu(): Promise<Pizza[]> {
   return menu;
 }
 
-export async function getOrder(id: string): Promise<OrderData> {
+export async function getOrder(id: number): Promise<OrderData> {
+  await updateEstimatedDelivery(id);
+
   const { data: orders, error } = await supabase
     .from("orders")
     .select("*")
@@ -45,9 +47,26 @@ export async function createOrder(order: OrderData): Promise<OrderData | null> {
   const { data: createdOrder, error } = await supabase
     .from("orders")
     .insert([newOrder])
-    .select();
+    .select("*");
 
-  if (error) throw new Error("Couldn't create new order");
+  if (error) {
+    console.log("Supabase Error:", error);
+    throw Error("Failed creating the order");
+  }
+
+  await updateEstimatedDelivery(orderId);
 
   return createdOrder.length ? createdOrder[0] : null;
+}
+
+export async function updateOrder(id: number, updateObj: object) {
+  const { error } = await supabase
+    .from("orders")
+    .update([updateObj])
+    .eq("id", id);
+
+  if (error) {
+    console.log("Supabase Error:", error);
+    throw Error("Failed creating the order");
+  }
 }

@@ -7,12 +7,12 @@ function OrderItem({
     quantity: number;
     totalPrice: number;
     name: string;
-    ingredients: string[];
+    addIngredients: string[];
   };
 }) {
-  const { quantity, totalPrice, name, ingredients } = item;
+  const { quantity, totalPrice, name, addIngredients } = item;
   return (
-    <li className="space-y-2 py-3">
+    <li className="space-y-2 py-4">
       <div className="flex items-center justify-between gap-4 text-sm">
         <p>
           <span className="font-bold">{quantity}&times;</span> {name}
@@ -20,7 +20,7 @@ function OrderItem({
         <p className="font-bold">{formatCurrency(totalPrice)}</p>
       </div>
       <p className="text-sm capitalize italic text-secondary-color">
-        {ingredients?.join(", ")}
+        {addIngredients?.join(", ")}
       </p>
     </li>
   );
