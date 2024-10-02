@@ -53,7 +53,7 @@ function CreateOrder() {
 
   return (
     <Container className="text-text-color">
-      <h2 className="mb-8 text-xl font-semibold">
+      <h2 className="mb-8 py-8 text-xl font-semibold">
         Ready to order? let&apos;s go!
       </h2>
       <Form
@@ -144,7 +144,7 @@ function CreateOrder() {
             checked={priority}
           />
           <label htmlFor="priority" className="cursor-pointer font-semibold">
-            Priority
+            Want to give your order priority?
           </label>
         </div>
 
