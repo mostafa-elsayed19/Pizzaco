@@ -3,6 +3,7 @@ import Logo from "./Logo";
 import Container from "./Container";
 import SearchOrder from "../features/order/SearchOrder";
 import CartOverview from "../features/cart/CartOverview";
+import User from "../features/users/User";
 
 function Header() {
   return (
@@ -13,6 +14,7 @@ function Header() {
           <SearchOrder />
           <CartOverview />
           <ThemeToggleButton />
+          <User />
         </div>
       </Container>
     </header>

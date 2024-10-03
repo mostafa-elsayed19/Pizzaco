@@ -1,85 +1,63 @@
-import { Form } from "react-router-dom";
+import { Form, useActionData } from "react-router-dom";
 import Container from "../../ui/Container";
 import Input from "../../ui/Input";
 import Button from "../../ui/Button";
 import { formatCurrency } from "./../../utils/helpers";
-import { getAddress as fetchAddress } from "../../services/apiLocation";
-import { useAppSelector } from "../../hooks/useReduxMethods";
+import { useAppDispatch, useAppSelector } from "../../hooks/useReduxMethods";
 import { getCart, getTotalCartPrice } from "../cart/cartSlice";
 import { useState } from "react";
-import { useFormSubmission } from "../../hooks/useFormSubmission";
+import { fetchAddress } from "../users/UserSlice";
+import { OrderData } from "../../types/orderTypes";
+
 import EmptyCart from "../cart/EmptyCart";
 
 function CreateOrder() {
-  const cart = useAppSelector(getCart);
-  const [position, setPosition] = useState({ latitude: "", longitude: "" });
+  const dispatch = useAppDispatch();
 
+  // Form options
+  const formErrors = useActionData() as OrderData;
+
+  // Order Priority State
   const [priority, setPriority] = useState(false);
-  const {
-    errors,
-    formValues,
-    handleInputChange,
-    handleSubmit,
-    setFormValues,
-    setErrors,
-  } = useFormSubmission();
 
-  // const formErrors = useActionData() as {
-  //   customer: string;
-  //   phone: string;
-  //   address: string;
-  // };
+  // User Data
+  const { name, position, address, addressStatus } = useAppSelector(
+    (state) => state.user,
+  );
 
+  const loadingAddress = addressStatus === "loading";
+
+  // Cart data
+  const cart = useAppSelector(getCart);
   const totalCartPrice = useAppSelector(getTotalCartPrice);
-
   const priorityPrice = priority ? totalCartPrice * 0.2 : 0;
-
   const totalPrice = totalCartPrice + priorityPrice;
-
-  async function handleFetchingAddress() {
-    try {
-      const { city, countryName, position } = await fetchAddress();
-      const fullAddress = `${city}, ${countryName}`;
-      setFormValues((prev) => ({ ...prev, address: fullAddress }));
-      setErrors((prev) => ({ ...prev, address: "" }));
-      setPosition(position);
-    } catch (error) {
-      console.log(error);
-      setErrors((prev) => ({ ...prev, address: "Failed to get the address" }));
-    }
-  }
 
   if (!cart.length) return <EmptyCart />;
 
   return (
     <Container className="text-text-color">
-      <h2 className="mb-8 py-8 text-xl font-semibold">
+      <h2 className="mb-6 py-8 text-xl font-semibold">
         Ready to order? let&apos;s go!
       </h2>
-      <Form
-        method="post"
-        className="flex flex-col gap-4 text-text-color"
-        onSubmit={handleSubmit}
-      >
+      <Form method="post" className="flex w-3/4 flex-col gap-4 text-text-color">
         <div className="flex flex-col items-baseline gap-2 md:flex-row md:gap-5">
           <label htmlFor="customer" className="min-w-20">
             Name
           </label>
-          <div className="flex w-3/4 flex-wrap items-baseline gap-4">
+          <div className="flex grow flex-col gap-2">
             <Input
               id="customer"
               type="text"
               placeholder="Your name..."
               className="w-full"
-              // defaultValue="mostafa"
+              defaultValue={name}
               required={true}
               name="customer"
-              value={formValues.customer}
-              onChange={handleInputChange}
             />
-            {errors.customer && (
-              <p className="text-sm font-normal text-red-700">
-                {errors.customer}
+            {formErrors?.customer && (
+              <p className="w-fit rounded-lg bg-red-100 px-4 py-1 text-sm font-normal text-red-600">
+                {formErrors.customer}
               </p>
             )}
           </div>
@@ -89,19 +67,19 @@ function CreateOrder() {
           <label htmlFor="phone" className="min-w-20">
             Phone
           </label>
-          <div className="flex w-3/4 flex-wrap items-baseline gap-4">
+          <div className="flex grow flex-col gap-2">
             <Input
               id="phone"
-              type="text"
+              type="tel"
               placeholder="Your phone..."
-              className="grow"
+              className="w-full"
               required={true}
               name="phone"
-              value={formValues.phone}
-              onChange={handleInputChange}
             />
-            {errors.phone && (
-              <p className="text-sm font-normal text-red-700">{errors.phone}</p>
+            {formErrors?.phone && (
+              <p className="w-fit rounded-lg bg-red-100 px-4 py-1 text-sm font-normal text-red-600">
+                {formErrors.phone}
+              </p>
             )}
           </div>
         </div>
@@ -110,25 +88,32 @@ function CreateOrder() {
           <label htmlFor="address" className="min-w-20">
             Address
           </label>
-          <div className="relative flex w-3/4 flex-wrap items-baseline gap-4">
+          <div className="relative flex grow flex-col gap-2">
             <Input
               id="address"
               type="text"
               placeholder="Your address..."
               className="w-full"
-              required={true}
+              disabled={loadingAddress}
+              defaultValue={address}
               name="address"
-              value={formValues.address}
-              onChange={handleInputChange}
+              required={true}
             />
             <span className="absolute right-1 top-1 md:top-1.5">
-              <Button type="small" onClick={handleFetchingAddress}>
+              <Button
+                disabled={loadingAddress}
+                type="small"
+                onClick={(e) => {
+                  e?.preventDefault();
+                  dispatch(fetchAddress());
+                }}
+              >
                 Get Address
               </Button>
             </span>
-            {errors.address && (
-              <p className="text-sm font-normal text-red-700">
-                {errors.address}
+            {formErrors?.address && (
+              <p className="w-fit rounded-lg bg-red-100 px-4 py-1 text-sm font-normal text-red-600">
+                {formErrors.address}
               </p>
             )}
           </div>

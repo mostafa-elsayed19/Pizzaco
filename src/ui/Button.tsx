@@ -23,7 +23,7 @@ function Button({
   type: ButtonType;
   className?: string;
   to?: string;
-  onClick?: () => void;
+  onClick?: (e?: React.MouseEvent<HTMLButtonElement>) => void;
   children: ReactNode;
   disabled?: boolean;
 }) {

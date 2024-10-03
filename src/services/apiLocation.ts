@@ -1,27 +1,21 @@
-function getPosition(): Promise<GeolocationPosition> {
-  return new Promise(function (resolve, reject) {
-    navigator.geolocation.getCurrentPosition(resolve, reject);
-  });
-}
-
-export async function getAddress() {
-  const positionObj = await getPosition();
-  const position = {
-    latitude: positionObj.coords.latitude.toString(),
-    longitude: positionObj.coords.longitude.toString(),
-  };
-
+export async function getAddress({
+  latitude,
+  longitude,
+}: {
+  latitude: string;
+  longitude: string;
+}) {
   // console.log(position);
 
   const res = await fetch(
-    `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${position.latitude}&longitude=${position.longitude}`,
+    `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}`,
   );
 
   if (!res.ok) throw Error("Failed getting address");
 
-  const { city, countryName } = await res.json();
+  const data = await res.json();
 
-  return { city, countryName, position };
+  return data;
 }
 // return positionObj;
 

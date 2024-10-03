@@ -37,16 +37,31 @@ function Input({
       />
     );
 
+  if (defaultValue)
+    return (
+      <input
+        id={id}
+        type={type}
+        defaultValue={defaultValue}
+        className={`input ${className}`}
+        disabled={disabled}
+        placeholder={placeholder}
+        name={name}
+        required={required}
+        onChange={onChange}
+      />
+    );
+
   return (
     <input
       id={id}
       type={type}
       value={value}
       className={`input ${className}`}
+      disabled={disabled}
       placeholder={placeholder}
       name={name}
       required={required}
-      defaultValue={defaultValue}
       onChange={onChange}
     />
   );
